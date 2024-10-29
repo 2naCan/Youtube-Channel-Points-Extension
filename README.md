@@ -70,10 +70,12 @@ ChannelPointsExtension/
 
 Start by installing your dependencies as usual.
 
+During this process there will be several appIDs, secrets and API keys that you will need to keep track of for Buildship integration. I would recommend noting them all down in a file to keep track of them for when you need it.
+
 ```bash
 npm install
 ```
-### Database setup
+### Supabase setup
 
 If you wish to use Supabase please follow their project setup here: https://supabase.com.
 Below is the database structure I have used:
@@ -91,25 +93,6 @@ create table
   ) tablespace pg_default;
 ```
 
-### Buildship setup
-
-In this project I have used Buildship for the data processing from the Supabase database. This is because they have pre-built templates and nodes to work with [Supabase](https://buildship.com/integrations/supabase) and [Openformat](https://buildship.com/integrations/openformat).
-
-Buildship setup can be found [here](https://buildship.com/blog/introducing-buildship).
-If you wish to follow my templates the workflows can be found here:
-
-[Watch-time data handling](https://buildship.app/remix/13b33e98-f386-41de-b41a-003037474455)
-
-[Reward handling](https://buildship.app/remix/1d340a39-0c57-426e-87db-9a0d02c677ad)
-
-In order to link this code with your Buildship workflow **please replace line 26** within the service-worker with your Buildship Endpoint.
-
-If you wish to do this all within the application, this code can be run within the service worker (src/scripts/service-worker/service-worker.ts) by following these two implementations.
-
-[Supabase](https://supabase.com/docs/guides/getting-started/quickstarts/reactjs) 
-
-[Openformat SDK](https://docs.openformat.tech/sdks/typescript/quickstart)
-
 ### OpenFormat setup
 The guide for account setup and Buildship integration can be found [here](https://docs.openformat.tech/no-code/buildship/templates/reward-user-xp).
 
@@ -119,6 +102,30 @@ If you wish to do this locally please follow [this guide](https://docs.openforma
 In order to utilise the Privy log-in modal you will need to [create an account](https://www.privy.io) and a new App. Then use the Settings page > Basics tab of the dashboard to get your Privy app ID, app secret, and verification key.
 
 Your Privy app ID should be **placed in line 37** of index.tsx (src/scripts/content/index.tsx)
+
+### Buildship setup
+
+In this project I have used Buildship for the data processing from the Supabase database. This is because they have pre-built templates and nodes to work with [Supabase](https://buildship.com/integrations/supabase) and [Openformat](https://buildship.com/integrations/openformat).
+
+Buildship setup can be found [here](https://buildship.com/blog/introducing-buildship).
+If you wish to follow my templates the workflows can be found here:
+
+[Watch-time data handling](https://buildship.app/remix/13b33e98-f386-41de-b41a-003037474455)
+
+[Reward handling](https://buildship.app/remix/7b7066ec-d3ef-4b18-9a7e-e3fab3e52c75)
+
+In order to link this code with your Buildship workflow **please replace line 26** within the service-worker with your **"Log or update watchtime"** Buildship Endpoint. Your Buildship endpoint will be revealed when shipping the workflow once all secrets have been filled in
+
+If you wish to do this all within the application, this code can be run within the service worker (src/scripts/service-worker/service-worker.ts) by following these two implementations.
+
+[Supabase](https://supabase.com/docs/guides/getting-started/quickstarts/reactjs)
+
+[Openformat SDK](https://docs.openformat.tech/sdks/typescript/quickstart)
+
+Once these Templates have been downloaded please replace any of the missing secret variables with the ones obtained from your Openformat Account and Supabase account. More information on what these variables are can be seen by hovering over its name. Additionally make sure you replace the dappId with your new Openformat Id.
+
+Project secrets can be added through the settings icon in the top left.
+
 
 ## Building and Shipping 
 
