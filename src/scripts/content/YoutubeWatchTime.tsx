@@ -28,7 +28,7 @@ const YouTubeWatchTime: React.FC = () => {
         document.head.appendChild(script);
 
         const handleWatchTimeEvent = (event: Event) => {
-            // console.log('event recieved')
+
             const watchtimeEvent = event as CustomEvent<{ watchTime: number; author: string; }>;
             const { watchTime, author } = watchtimeEvent.detail;
 
@@ -45,12 +45,10 @@ const YouTubeWatchTime: React.FC = () => {
         };
 
         window.addEventListener('youtubeWatchTime', handleWatchTimeEvent, false);
-        // console.log('added event listener for watchtime')
 
         // remove listener on unmount
         return () => {
             window.removeEventListener('youtubeWatchTime', handleWatchTimeEvent);
-            // console.log('removed event listener')
         };
     }, [authenticated]);
 

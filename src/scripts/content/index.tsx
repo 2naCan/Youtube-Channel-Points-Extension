@@ -34,7 +34,7 @@ const injectReact = (rootId: string): void => {
         root.render(
             <React.StrictMode>
                 <PrivyProvider
-                    appId="cm21sc4k5040m2oesgllrzrma"
+                    appId="Privy app id" // Please replace with your Privy app id, found in the dashboard
                     config={{
                         loginMethods: ['email'],
                         appearance: {

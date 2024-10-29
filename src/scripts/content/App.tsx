@@ -9,15 +9,12 @@ const App = () => {
     }
 
     useEffect(() => {
-        // console.log('Gimme: App.tsx')
         setIsOpen(true)
         chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-            // console.log('Gimme: Message Received', request, sender, sendResponse)
         })
     }, [])
 
     const { user, login, authenticated, ready, logout } = usePrivy();
-    // console.log(user)
 
     return (
         <>

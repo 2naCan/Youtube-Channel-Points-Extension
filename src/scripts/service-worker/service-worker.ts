@@ -23,7 +23,7 @@ chrome.commands.onCommand.addListener(command => {
 
 // Listen for messages from the content script
 let lastRequestTime = 0;
-const logEndpoint = "https://ueeyvn.buildship.run/logWatchTime";
+const logEndpoint = "buildship endpoint"; //Please replace this with your buildship endpoint link
 
 chrome.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
     const currentTime = Date.now();
@@ -57,8 +57,6 @@ chrome.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
                     wallet_address: wallet.address,
                 }),
             });
-
-            console.log("Data sent to DB");
         }
     } else {
         console.log('Skipping update, too frequent.');

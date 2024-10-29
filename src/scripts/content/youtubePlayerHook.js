@@ -6,13 +6,12 @@
     let batchInterval = 30; // How often the data is sent to content script
     let lastBatchTime = 0;
     let isPaused = false;
-    // console.log('youtube player script loaded')
+
 
     function checkForPlayer() {
         const moviePlayer = document.getElementById("movie_player");
         if (moviePlayer) {
             player = moviePlayer;
-            // console.log('Player hooked')
             observePlayer();
         } else {
             setTimeout(checkForPlayer, 1000);
@@ -25,10 +24,7 @@
                 const state = player.getPlayerState();
                 const currentTime = player.getCurrentTime();
 
-                // Get video author
                 author = player.getVideoData().author; // Get video author
-
-                // console.log(state)
 
                 // track time if playing
                 if (state === 1) { // 1 means playing
@@ -67,7 +63,6 @@
             }
         });
         window.dispatchEvent(event);
-        // console.log(`Data sent to content script Author: ${author}, Watch Time: ${watchTime}, Event: ${event}`);
     }
 
     checkForPlayer();
